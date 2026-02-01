@@ -44,7 +44,9 @@ export default function Userdashboard() {
 
   async function fetchData() {
     try {
-      const response = await fetch("http://localhost:5050/api/users");
+      const response = await fetch(
+        "https://fwab-server-production.up.railway.app/api/users"
+      );
 
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
@@ -72,15 +74,18 @@ export default function Userdashboard() {
       return;
     }
     try {
-      const response = await fetch("http://localhost:5050/api/users/add-user", {
-        method: "POST",
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify({
-          username: newUser.username,
-          email: newUser.email,
-          roles: newUser.roles,
-        }),
-      });
+      const response = await fetch(
+        "https://fwab-server-production.up.railway.app/api/users/add-user",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: newUser.username,
+            email: newUser.email,
+            roles: newUser.roles,
+          }),
+        }
+      );
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -101,7 +106,7 @@ export default function Userdashboard() {
   async function fetchUserRole() {
     try {
       const response = await fetch(
-        "http://localhost:5050/api/users/user-auth",
+        "https://fwab-server-production.up.railway.app/api/users/user-auth",
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -145,7 +150,7 @@ export default function Userdashboard() {
 
     try {
       const response = await fetch(
-        `http://localhost:5050/api/users/delete/${selectedEmail}`,
+        `https://fwab-server-production.up.railway.app/api/users/delete/${selectedEmail}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
@@ -180,7 +185,7 @@ export default function Userdashboard() {
     }
     try {
       const response = await fetch(
-        `http://localhost:5050/api/users/update/${selectedEmail}`,
+        `https://fwab-server-production.up.railway.app/api/users/update/${selectedEmail}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },

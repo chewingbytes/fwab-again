@@ -41,11 +41,14 @@ export function Profile() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://localhost:5050/api/users/logout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://fwab-server-production.up.railway.app/api/users/logout",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        }
+      );
 
       if (response.ok) {
         console.log("Logout successful");
@@ -65,7 +68,7 @@ export function Profile() {
     const fetchUser = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5050/api/users/user-auth",
+          "https://fwab-server-production.up.railway.app/api/users/user-auth",
           {
             method: "GET",
             headers: { "Content-Type": "application/json" },
@@ -93,7 +96,7 @@ export function Profile() {
       if (!user) return;
 
       const response = await fetch(
-        `http://localhost:5050/api/users/update/${user.email}`,
+        `https://fwab-server-production.up.railway.app/api/users/update/${user.email}`,
         {
           method: "PATCH",
           headers: {

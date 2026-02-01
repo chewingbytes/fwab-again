@@ -59,12 +59,15 @@ export default function LoginForm() {
   const onSubmit = async (data: { username: string; email: string; password: string }) => {
     setGeneralError("");
     try {
-      const response = await fetch("http://localhost:5050/api/users/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        "https://fwab-server-production.up.railway.app/api/users/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify(data),
+        }
+      );
 
       console.log("Response status:", response.status);
 

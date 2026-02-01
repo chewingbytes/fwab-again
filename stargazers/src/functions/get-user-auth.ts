@@ -1,7 +1,7 @@
 export default async function getUser() {
     try {
       const response = await fetch(
-        "http://localhost:5050/api/users/user-auth",
+          "https://fwab-server-production.up.railway.app/api/users/user-auth",
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },

@@ -37,7 +37,9 @@ const Home = () => {
 
   async function fetchData() {
     try {
-      const response = await fetch("http://localhost:5050/api/events");
+      const response = await fetch(
+        "https://fwab-server-production.up.railway.app/api/events"
+      );
       if (!response.ok) {
         const message = `An error has occurred: ${response.statusText}`;
         console.error(message);

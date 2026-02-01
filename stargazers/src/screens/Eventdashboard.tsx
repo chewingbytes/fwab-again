@@ -54,7 +54,9 @@ export default function EventsDashboard() {
 
   async function fetchData() {
     try {
-      const response = await fetch("http://localhost:5050/api/events");
+      const response = await fetch(
+        "https://fwab-server-production.up.railway.app/api/events"
+      );
       if (!response.ok) throw new Error(`Error: ${response.statusText}`);
       const eventData = await response.json();
       setEvents(eventData);
@@ -78,7 +80,7 @@ export default function EventsDashboard() {
   async function fetchUserRole() {
     try {
       const response = await fetch(
-        "http://localhost:5050/api/users/user-auth",
+        "https://fwab-server-production.up.railway.app/api/users/user-auth",
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -133,11 +135,14 @@ export default function EventsDashboard() {
       return;
     }
     try {
-      const response = await fetch("http://localhost:5050/api/events", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newEvent),
-      });
+      const response = await fetch(
+        "https://fwab-server-production.up.railway.app/api/events",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newEvent),
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to add event");
 
@@ -175,7 +180,7 @@ export default function EventsDashboard() {
     }
     try {
       const response = await fetch(
-        `http://localhost:5050/api/events/update/${eventName}`,
+        `https://fwab-server-production.up.railway.app/api/events/update/${eventName}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -212,7 +217,7 @@ export default function EventsDashboard() {
 
     try {
       const response = await fetch(
-        `http://localhost:5050/api/events/delete/${eventName}`,
+        `https://fwab-server-production.up.railway.app/api/events/delete/${eventName}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },

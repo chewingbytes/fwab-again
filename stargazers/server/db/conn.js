@@ -1,12 +1,15 @@
 import { MongoClient } from "mongodb";
+import dotenv from "dotenv";
 
-const uri = "mongodb+srv://bryanchew:BryanChew123@stargazing-connection.xhtoy.mongodb.net/"
+dotenv.config();
+
+const uri = process.env.MONGODB_URI || "mongodb://admin:password123@localhost:27017/stargazing?authSource=admin";
 const client = new MongoClient(uri);
 
 let conn;
 
 try {
-  console.log("Connecting to Local MongoDB");
+  console.log("Connecting to MongoDB...");
   conn = await client.connect();
   console.log("Connected successfully to MongoDB");
 } catch (e) {
